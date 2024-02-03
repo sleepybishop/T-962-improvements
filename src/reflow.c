@@ -298,6 +298,11 @@ int32_t Reflow_Run(uint32_t thetime, float meastemp, uint8_t* pheat, uint8_t* pf
 		// Run at a low fixed speed during heating for now
 		*pfan = NV_GetConfig(REFLOW_MIN_FAN_SPEED);
 	}
+	if(meastemp < intsetpoint) {
+		*pheat = 255;
+	} else {
+		*pheat = 0;
+	}
 	return retval;
 }
 
